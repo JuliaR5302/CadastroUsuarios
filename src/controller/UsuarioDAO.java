@@ -102,4 +102,41 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
     
+    public boolean excluirUsuario(Usuario usuario){
+        try {
+            conexao = ModuleConexao.conectar();
+            String sql = "delete from usuarios where usuarios.idusuario=?";
+            stm = conexao.prepareStatement(sql);
+            stm.setInt(1, usuario.getId());
+            stm.executeUpdate();
+            
+            conexao.close();
+            
+            return true;
+            
+        } catch (SQLException e){ 
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return false;
+    }
+    
+    public void alterarUsuario(Usuario usuario){
+        try {
+            conexao = ModuleConexao.conectar();
+            String sql = "update usuarios set nome = ?, login = ?, senha = ?, perfil = ? where usuarios.idusuario = ?";
+            stm = conexao.prepareStatement(sql);
+            stm.setString(1, usuario.getNome());
+            stm.setString(2, usuario.getLogin());
+            stm.setString(3, usuario.getSenha());
+            stm.setString(4, usuario.getPerfil());
+            stm.setInt(5, usuario.getId());
+            
+            stm.executeUpdate();
+            conexao.close();
+            
+        } catch (SQLException e){ 
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
 }

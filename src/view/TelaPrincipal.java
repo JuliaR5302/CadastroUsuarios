@@ -32,11 +32,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMnCadUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jMenu1.setText("Arquivo");
 
-        jMnCadUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnCadUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         jMnCadUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usario.png"))); // NOI18N
         jMnCadUsuario.setText("Cadastro de Usuário");
         jMnCadUsuario.addActionListener(new java.awt.event.ActionListener() {

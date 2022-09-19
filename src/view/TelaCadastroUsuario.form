@@ -217,12 +217,18 @@
                     <Property name="mnemonic" type="int" value="101"/>
                     <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnEditarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jBtnExcluir">
                   <Properties>
                     <Property name="mnemonic" type="int" value="100"/>
                     <Property name="text" type="java.lang.String" value="Deletar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluirActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -291,6 +297,9 @@
                       </Table>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableUsuarioMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

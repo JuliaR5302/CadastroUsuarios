@@ -154,9 +154,19 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
         jBtnEditar.setMnemonic('e');
         jBtnEditar.setText("Editar");
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
 
         jBtnExcluir.setMnemonic('d');
         jBtnExcluir.setText("Deletar");
+        jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -258,6 +268,11 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTableUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableUsuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableUsuario);
 
         jLabel5.setText("Nome: ");
@@ -331,7 +346,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
         }
-
+        listar();
     }//GEN-LAST:event_jBtnCadastrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -355,6 +370,37 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jTxtFiltroClienteKeyPressed
+
+    private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+        UsuarioDAO usuarioDao = new UsuarioDAO();
+        if(usuarioDao.excluirUsuario(listaUsuarios.get(jTableUsuario.getSelectedRow()))){
+            JOptionPane.showMessageDialog(this, "Dados do usuário excluídos com sucesso", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+            listar();
+        }else{
+            JOptionPane.showMessageDialog(this, "Erro ao excluir os dados!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtnExcluirActionPerformed
+
+    private void jTableUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsuarioMouseClicked
+        JPanielDadosUsuario.setSelectedIndex(0);
+        mostraDetalheUsuario();
+    }//GEN-LAST:event_jTableUsuarioMouseClicked
+
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+       Usuario usuario = new Usuario();
+       usuario.setNome(jTxtNome.getText());
+       usuario.setLogin(jTxtLogin.getText());
+       usuario.setSenha(jTxtSenha.getText());
+       usuario.setPerfil((String) jCbxPerfil.getSelectedItem());
+       
+       UsuarioDAO usuarioDAO = new UsuarioDAO();
+        if (usuario != null) {
+            usuarioDAO.alterarUsuario(usuario);
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao editar registro!");
+        }
+        listar();
+    }//GEN-LAST:event_jBtnEditarActionPerformed
 
     /**
      * @param args the command line arguments
