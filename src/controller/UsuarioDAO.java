@@ -22,7 +22,6 @@ public class UsuarioDAO {
     
 
     public UsuarioDAO() {
-
         this.conexao = ModuleConexao.conectar();
     }
 
@@ -120,7 +119,7 @@ public class UsuarioDAO {
         return false;
     }
     
-    public void alterarUsuario(Usuario usuario){
+    public boolean alterarUsuario(Usuario usuario){
         try {
             conexao = ModuleConexao.conectar();
             String sql = "update usuarios set nome = ?, login = ?, senha = ?, perfil = ? where usuarios.idusuario = ?";
@@ -134,9 +133,13 @@ public class UsuarioDAO {
             stm.executeUpdate();
             conexao.close();
             
+            return true;
+            
         } catch (SQLException e){ 
             JOptionPane.showMessageDialog(null, e);
         }
+        
+        return false;
+        
     }
-    
 }

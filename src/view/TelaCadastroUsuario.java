@@ -257,15 +257,22 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Login", "Senha", "Perfil"
+                "Id", "Nome", "Login", "Senha", "Perfil"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTableUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -387,19 +394,26 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableUsuarioMouseClicked
 
     private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
-       Usuario usuario = new Usuario();
-       usuario.setNome(jTxtNome.getText());
-       usuario.setLogin(jTxtLogin.getText());
-       usuario.setSenha(jTxtSenha.getText());
-       usuario.setPerfil((String) jCbxPerfil.getSelectedItem());
-       
-       UsuarioDAO usuarioDAO = new UsuarioDAO();
-        if (usuario != null) {
-            usuarioDAO.alterarUsuario(usuario);
+        if (jTxtNome.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informe o nome do Cliente!", "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao editar registro!");
+            Usuario usuario = new Usuario();
+            usuario.setId(listaUsuarios.get(jTableUsuario.getSelectedRow()).getId());
+            usuario.setNome(jTxtNome.getText().trim());
+            usuario.setLogin(jTxtLogin.getText().trim());
+            usuario.setSenha(jTxtSenha.getText().trim());
+            usuario.setPerfil(jCbxPerfil.getSelectedItem().toString());
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+        if (usuarioDAO.alterarUsuario(usuario)) {
+            JOptionPane.showMessageDialog(this, "Dados alterados com sucesso!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao alterar Dados!", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
         }
+    }    
         listar();
+        
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
     /**
