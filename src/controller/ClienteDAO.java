@@ -26,6 +26,10 @@ public class ClienteDAO {
         this.con = new ModuleConexao().conectar();
     }
     
+    public ClienteDAO() {
+        
+    }
+    
     //Metodo cadastrarCliente
     public void cadastrarCliente(Cliente obj) {
         try {
