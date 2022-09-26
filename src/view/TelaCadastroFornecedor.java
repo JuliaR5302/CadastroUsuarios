@@ -5,17 +5,17 @@
  */
 package view;
 
-import controller.ClienteDAO;
+import controller.FornecedorDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
+import model.Fornecedor;
 
 /**
  *
  * @author Geral
  */
-public class TelaCliente extends javax.swing.JFrame {
+public class TelaCadastroFornecedor extends javax.swing.JFrame {
     
     public void habilitarBotoes() {
         jBttnNovo.setEnabled(false);
@@ -35,17 +35,17 @@ public class TelaCliente extends javax.swing.JFrame {
 
     public void listar() {
 
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = dao.listarClientes();
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        FornecedorDAO dao = new FornecedorDAO();
+        List<Fornecedor> lista = dao.listarFornecedores();
+        DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Fornecedor c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
-                c.getCpf(),
+                c.getCnpj(),
                 c.getEmail(),
                 c.getTelefone(),
                 c.getCelular(),
@@ -64,7 +64,7 @@ public class TelaCliente extends javax.swing.JFrame {
     /**
      * Creates new form TelaCliente
      */
-    public TelaCliente() {
+    public TelaCadastroFornecedor() {
         initComponents();
     }
 
@@ -109,13 +109,13 @@ public class TelaCliente extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jFormattedRG = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
-        jFormattedCPF = new javax.swing.JFormattedTextField();
+        jFormattedCNPJ = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTxtNomePesquisa = new javax.swing.JTextField();
         jBttnPesquisarNome = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTblClientes = new javax.swing.JTable();
+        jTblFornecedores = new javax.swing.JTable();
         jBttnNovo = new javax.swing.JButton();
         jBttnSalvar = new javax.swing.JButton();
         jBttnEditar = new javax.swing.JButton();
@@ -132,7 +132,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 204));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Cadastro do Cliente");
+        jLabel1.setText("Cadastro de Fornecedor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,10 +215,10 @@ public class TelaCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jLabel15.setText("CPF:");
+        jLabel15.setText("CNPJ:");
 
         try {
-            jFormattedCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.### - ##")));
+            jFormattedCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.### / #### - ##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -289,7 +289,7 @@ public class TelaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,12 +346,12 @@ public class TelaCliente extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jFormattedRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15)
-                        .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jFormattedCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel14))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JtbPaneDadosPessoais.addTab("Dados Pessoais", jPanel2);
+        JtbPaneDadosPessoais.addTab("Dados Fornecedor", jPanel2);
 
         jLabel16.setText("Nome:");
 
@@ -368,20 +368,20 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jTblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        jTblFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "RG", "CPF", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "N°", "Comp11", "Bairro", "Cidade", "UF"
+                "Código", "Nome", "RG", "CNPJ", "E-mail", "Telefone", "Celular", "CEP", "Endereço", "N°", "Comp11", "Bairro", "Cidade", "UF"
             }
         ));
-        jTblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTblFornecedores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTblClientesMouseClicked(evt);
+                jTblFornecedoresMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTblClientes);
+        jScrollPane1.setViewportView(jTblFornecedores);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -408,11 +408,11 @@ public class TelaCliente extends javax.swing.JFrame {
                     .addComponent(jTxtNomePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBttnPesquisarNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        JtbPaneDadosPessoais.addTab("Consulta de Clientes", jPanel3);
+        JtbPaneDadosPessoais.addTab("Consulta de Fornecedor", jPanel3);
 
         jBttnNovo.setText("+ Novo");
         jBttnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -451,11 +451,11 @@ public class TelaCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(293, 293, 293)
                 .addComponent(jBttnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(74, 74, 74)
                 .addComponent(jBttnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69)
                 .addComponent(jBttnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGap(72, 72, 72)
                 .addComponent(jBttnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -487,11 +487,11 @@ public class TelaCliente extends javax.swing.JFrame {
         // botao salvar 
         desabilitarBotoes();
 
-        Cliente obj = new Cliente();
+        Fornecedor obj = new Fornecedor();
 
         obj.setNome(jTxtNome.getText());
         obj.setRg(jFormattedRG.getText());
-        obj.setCpf(jFormattedCPF.getText());
+        obj.setCnpj(jFormattedCNPJ.getText());
         obj.setEmail(jTxtEmail.getText());
         obj.setTelefone(jFormattedTxtTelefoneFixo.getText());
         obj.setCelular(jFormattedTxtCelular.getText());
@@ -503,9 +503,9 @@ public class TelaCliente extends javax.swing.JFrame {
         obj.setCidade(jTxtCidade.getText());
         obj.setUf(jCmbBoxEstado.getSelectedItem().toString());
 
-        ClienteDAO dao = new ClienteDAO();
+        FornecedorDAO dao = new FornecedorDAO();
 
-        dao.cadastrarCliente(obj);
+        dao.cadastrarFornecedor(obj);
     }//GEN-LAST:event_jBttnSalvarActionPerformed
 
     private void jBttnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnNovoActionPerformed
@@ -515,11 +515,11 @@ public class TelaCliente extends javax.swing.JFrame {
     private void jBttnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnEditarActionPerformed
         // botao editar
         desabilitarBotoes();
-        Cliente obj = new Cliente();
+        Fornecedor obj = new Fornecedor();
 
         obj.setNome(jTxtNome.getText());
         obj.setRg(jFormattedRG.getText());
-        obj.setCpf(jFormattedCPF.getText());
+        obj.setCnpj(jFormattedCNPJ.getText());
         obj.setEmail(jTxtEmail.getText());
         obj.setTelefone(jFormattedTxtTelefoneFixo.getText());
         obj.setCelular(jFormattedTxtCelular.getText());
@@ -533,61 +533,61 @@ public class TelaCliente extends javax.swing.JFrame {
 
         obj.setId(Integer.parseInt(jTxtCodigo.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
+        FornecedorDAO dao = new FornecedorDAO();
 
-        dao.alterarCliente(obj);
+        dao.alterarFornecedor(obj);
     }//GEN-LAST:event_jBttnEditarActionPerformed
 
-    private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
+    private void jTblFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblFornecedoresMouseClicked
         // TODO add your handling code here:
 
         habilitarBotoes();
         JtbPaneDadosPessoais.setSelectedIndex(0);
 
-        jTxtCodigo.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 0).toString());
-        jTxtNome.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 1).toString());
-        jFormattedRG.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 2).toString());
-        jFormattedCPF.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 3).toString());
-        jTxtEmail.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 4).toString());
-        jFormattedTxtTelefoneFixo.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 5).toString());
-        jFormattedTxtCelular.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 6).toString());
-        jFormattedCEP.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 7).toString());
-        jTxtEndereco.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 8).toString());
-        jTxtNumeroCasa.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 9).toString());
-        jTxtComplemento.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 10).toString());
-        jTxtBairro.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 11).toString());
-        jTxtCidade.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 12).toString());
-        jCmbBoxEstado.setSelectedItem(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 13).toString());
-    }//GEN-LAST:event_jTblClientesMouseClicked
+        jTxtCodigo.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 0).toString());
+        jTxtNome.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 1).toString());
+        jFormattedRG.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 2).toString());
+        jFormattedCNPJ.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 3).toString());
+        jTxtEmail.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 4).toString());
+        jFormattedTxtTelefoneFixo.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 5).toString());
+        jFormattedTxtCelular.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 6).toString());
+        jFormattedCEP.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 7).toString());
+        jTxtEndereco.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 8).toString());
+        jTxtNumeroCasa.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 9).toString());
+        jTxtComplemento.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 10).toString());
+        jTxtBairro.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 11).toString());
+        jTxtCidade.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 12).toString());
+        jCmbBoxEstado.setSelectedItem(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 13).toString());
+    }//GEN-LAST:event_jTblFornecedoresMouseClicked
 
     private void jBttnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnExcluirActionPerformed
         // botao excluir
         desabilitarBotoes();
 
-        Cliente obj = new Cliente();
+        Fornecedor obj = new Fornecedor();
 
         obj.setId(Integer.parseInt(jTxtCodigo.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
+        FornecedorDAO dao = new FornecedorDAO();
 
-        dao.excluirCliente(obj);
+        dao.excluirFornecedor(obj);
     }//GEN-LAST:event_jBttnExcluirActionPerformed
 
     private void jTxtNomePesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNomePesquisaKeyPressed
         String nome = "%" + jTxtNomePesquisa.getText() + "%";
 
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = dao.buscaClientePorNome(nome);
+        FornecedorDAO dao = new FornecedorDAO();
+        List<Fornecedor> lista = dao.buscaFornecedorPorNome(nome);
 
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Fornecedor c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
-                c.getCpf(),
+                c.getCnpj(),
                 c.getEmail(),
                 c.getTelefone(),
                 c.getCelular(),
@@ -607,8 +607,8 @@ public class TelaCliente extends javax.swing.JFrame {
         // botao buscar cliente por nome
 
         String nome = jTxtNome.getText();
-        Cliente obj = new Cliente();
-        ClienteDAO dao = new ClienteDAO();
+        Fornecedor obj = new Fornecedor();
+        FornecedorDAO dao = new FornecedorDAO();
 
         obj = dao.consultaPorNome(nome);
 
@@ -618,7 +618,7 @@ public class TelaCliente extends javax.swing.JFrame {
             jTxtCodigo.setText(String.valueOf(obj.getId()));
             jTxtNome.setText(obj.getNome());
             jFormattedRG.setText(obj.getRg());
-            jFormattedCPF.setText(obj.getCpf());
+            jFormattedCNPJ.setText(obj.getCnpj());
             jTxtEmail.setText(obj.getEmail());
             jFormattedTxtTelefoneFixo.setText(obj.getTelefone());
             jFormattedTxtCelular.setText(obj.getCelular());
@@ -630,7 +630,7 @@ public class TelaCliente extends javax.swing.JFrame {
             jTxtCidade.setText(obj.getCidade());
             jCmbBoxEstado.setSelectedItem(obj.getUf());
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+            JOptionPane.showMessageDialog(null, "Fornecedor não encontrado!");
         }
     }//GEN-LAST:event_jBttnPesquisarActionPerformed
 
@@ -638,18 +638,18 @@ public class TelaCliente extends javax.swing.JFrame {
         // Botao pesquisar
         String nome = "%" + jTxtNomePesquisa.getText() + "%";
 
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = dao.buscaClientePorNome(nome);
+        FornecedorDAO dao = new FornecedorDAO();
+        List<Fornecedor> lista = dao.buscaFornecedorPorNome(nome);
 
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Fornecedor c : lista) {
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
                 c.getRg(),
-                c.getCpf(),
+                c.getCnpj(),
                 c.getEmail(),
                 c.getTelefone(),
                 c.getCelular(),
@@ -668,8 +668,8 @@ public class TelaCliente extends javax.swing.JFrame {
     private void jFormattedCEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedCEPKeyPressed
         //Programacao do keypress
       /*  if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Cliente obj = new Cliente();
-            ClienteDAO dao = new ClienteDAO();
+            Fornecedor obj = new Fornecedor();
+            FornecedorDAO dao = new FornecedorDAO();
             obj = dao.buscaCep(jTxtCep.getText());
 
             jTxtEndereco.setText(obj.getEndereco());
@@ -703,20 +703,21 @@ public class TelaCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastroFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCliente().setVisible(true);
+                new TelaCadastroFornecedor().setVisible(true);
             }
         });
     }
@@ -731,7 +732,7 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JButton jBttnSalvar;
     private javax.swing.JComboBox<String> jCmbBoxEstado;
     private javax.swing.JFormattedTextField jFormattedCEP;
-    private javax.swing.JFormattedTextField jFormattedCPF;
+    private javax.swing.JFormattedTextField jFormattedCNPJ;
     private javax.swing.JFormattedTextField jFormattedRG;
     private javax.swing.JFormattedTextField jFormattedTxtCelular;
     private javax.swing.JFormattedTextField jFormattedTxtTelefoneFixo;
@@ -755,7 +756,7 @@ public class TelaCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTblClientes;
+    private javax.swing.JTable jTblFornecedores;
     private javax.swing.JTextField jTxtBairro;
     private javax.swing.JTextField jTxtCidade;
     private javax.swing.JTextField jTxtCodigo;

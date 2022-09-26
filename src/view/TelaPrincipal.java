@@ -30,6 +30,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMnCadUsuario = new javax.swing.JMenuItem();
+        jMnCadCliente = new javax.swing.JMenuItem();
+        jMnCadFornecedor = new javax.swing.JMenuItem();
+        jMnCadProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -45,6 +48,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMnCadUsuario);
+
+        jMnCadCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadCliente.setText("Cadastro de Cliente");
+        jMnCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnCadClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnCadCliente);
+
+        jMnCadFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadFornecedor.setText("Cadastro de Fornecedores");
+        jMnCadFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnCadFornecedorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnCadFornecedor);
+
+        jMnCadProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadProduto.setText("Cadastro de Produtos");
+        jMnCadProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnCadProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnCadProduto);
 
         jMenuBar1.add(jMenu1);
 
@@ -72,6 +102,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaCadastroUsuario tela = new TelaCadastroUsuario();
         tela.setVisible(true);
     }//GEN-LAST:event_jMnCadUsuarioActionPerformed
+
+    private void jMnCadFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnCadFornecedorActionPerformed
+        TelaCadastroFornecedor tela = new TelaCadastroFornecedor();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMnCadFornecedorActionPerformed
+
+    private void jMnCadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnCadProdutoActionPerformed
+        TelaCadastroProduto tela = new TelaCadastroProduto();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMnCadProdutoActionPerformed
+
+    private void jMnCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnCadClienteActionPerformed
+        TelaCliente tela = new TelaCliente();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jMnCadClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,6 +157,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    public static javax.swing.JMenuItem jMnCadCliente;
+    public static javax.swing.JMenuItem jMnCadFornecedor;
+    public static javax.swing.JMenuItem jMnCadProduto;
     public static javax.swing.JMenuItem jMnCadUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,11 +32,11 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
               <Component id="jBttnNovo" linkSize="4" min="-2" pref="78" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Component id="jBttnSalvar" linkSize="4" min="-2" pref="75" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Component id="jBttnEditar" linkSize="4" min="-2" pref="72" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
               <Component id="jBttnExcluir" linkSize="4" min="-2" pref="76" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -94,7 +94,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cadastro do Cliente"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Fornecedor"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -106,8 +106,8 @@
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Dados Pessoais">
-                <Property name="tabTitle" type="java.lang.String" value="Dados Pessoais"/>
+              <JTabbedPaneConstraints tabName="Dados Fornecedor">
+                <Property name="tabTitle" type="java.lang.String" value="Dados Fornecedor"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -193,7 +193,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jFormattedCPF" min="-2" pref="159" max="-2" attributes="0"/>
+                                      <Component id="jFormattedCNPJ" min="-2" pref="159" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -262,7 +262,7 @@
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="jFormattedRG" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jFormattedCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jFormattedCNPJ" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -433,13 +433,13 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CPF:"/>
+                <Property name="text" type="java.lang.String" value="CNPJ:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="jFormattedCPF">
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedCNPJ">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="###.###.### - ##" subtype="-1" type="5"/>
+                  <Format format="##.###.### / #### - ##" subtype="-1" type="5"/>
                 </Property>
               </Properties>
             </Component>
@@ -448,8 +448,8 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Consulta de Clientes">
-                <Property name="tabTitle" type="java.lang.String" value="Consulta de Clientes"/>
+              <JTabbedPaneConstraints tabName="Consulta de Fornecedor">
+                <Property name="tabTitle" type="java.lang.String" value="Consulta de Fornecedor"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -483,7 +483,7 @@
                           <Component id="jBttnPesquisarNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="216" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="219" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -515,14 +515,14 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTblClientes">
+                <Component class="javax.swing.JTable" name="jTblFornecedores">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="14" rowCount="1">
                         <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                         <Column editable="true" title="Nome" type="java.lang.Object"/>
                         <Column editable="true" title="RG" type="java.lang.Object"/>
-                        <Column editable="true" title="CPF" type="java.lang.Object"/>
+                        <Column editable="true" title="CNPJ" type="java.lang.Object"/>
                         <Column editable="true" title="E-mail" type="java.lang.Object"/>
                         <Column editable="true" title="Telefone" type="java.lang.Object"/>
                         <Column editable="true" title="Celular" type="java.lang.Object"/>
@@ -537,7 +537,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTblClientesMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTblFornecedoresMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
