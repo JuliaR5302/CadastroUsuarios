@@ -9,6 +9,7 @@ import controller.ProdutoDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Fornecedor;
 import model.Produto;
 
 /**
@@ -37,25 +38,16 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         ProdutoDAO dao = new ProdutoDAO();
         List<Produto> lista = dao.listarProdutos();
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) jTblProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Produto p : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                p.getId(),
+                p.getDescricao(),
+                p.getPreco(),
+                p.getQtd_estoque(),
+                p.getFornecedor()
             });
 
         }
@@ -79,32 +71,32 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        JtbPaneDadosPessoais = new javax.swing.JTabbedPane();
+        JtbPaneDadosProduto = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTxtCodigo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTxtNome = new javax.swing.JTextField();
+        jTxtDescricao = new javax.swing.JTextField();
         jBttnPesquisar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jTxtBairro = new javax.swing.JTextField();
+        jTxtPreco = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTxtCidade = new javax.swing.JTextField();
+        jTxtEstoque = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jCmbBoxEstado = new javax.swing.JComboBox<>();
+        jCmbBoxFornecedor = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jTxtNomePesquisa = new javax.swing.JTextField();
         jBttnPesquisarNome = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTblClientes = new javax.swing.JTable();
+        jTblProdutos = new javax.swing.JTable();
         jBttnNovo = new javax.swing.JButton();
         jBttnSalvar = new javax.swing.JButton();
         jBttnEditar = new javax.swing.JButton();
         jBttnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Cliente");
+        setTitle("Cadastro de Produtos");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -114,7 +106,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 204));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Cadastro do Cliente");
+        jLabel1.setText("Cadastro de Produto");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -133,10 +125,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("Código:");
 
-        jLabel3.setText("Nome:");
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel3.setText("Descrição:");
 
+        jBttnPesquisar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisar.setText("Pesquisar");
         jBttnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,13 +139,17 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("Bairro:");
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel10.setText("Preço:");
 
-        jLabel11.setText("Cidade:");
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jLabel11.setText("Qtd. Estoque:");
 
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel13.setText("Fornecedor:");
 
-        jCmbBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Estado:", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jCmbBoxFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jCmbBoxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um fornecedor:", "Fronecedor1", "Fornecedor2", "Fornecedor3" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -158,35 +157,35 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(7, 7, 7)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTxtNome))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jBttnPesquisar)
-                                .addGap(420, 420, 420))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel10))
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCmbBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(373, 373, 373))))
+                        .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTxtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtDescricao)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jCmbBoxFornecedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBttnPesquisar)
+                .addGap(362, 362, 362))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,31 +197,34 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBttnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTxtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jTxtEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jCmbBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                    .addComponent(jCmbBoxFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addGap(103, 103, 103))
         );
 
-        JtbPaneDadosPessoais.addTab("Dados Pessoais", jPanel2);
+        JtbPaneDadosProduto.addTab("Dados de Produto", jPanel2);
 
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel16.setText("Nome:");
 
+        jTxtNomePesquisa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTxtNomePesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTxtNomePesquisaKeyPressed(evt);
             }
         });
 
+        jBttnPesquisarNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisarNome.setText("Pesquisar");
         jBttnPesquisarNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,20 +232,21 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
-        jTblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        jTblProdutos.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jTblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "RG", "CPF", "E-mail"
+                "Código", "Descrição", "Preço", "Qtd. Estoque", "Fornecefor"
             }
         ));
-        jTblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTblClientesMouseClicked(evt);
+                jTblProdutosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTblClientes);
+        jScrollPane1.setViewportView(jTblProdutos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -258,7 +261,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                         .addComponent(jTxtNomePesquisa)
                         .addGap(18, 18, 18)
                         .addComponent(jBttnPesquisarNome))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -270,12 +273,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                     .addComponent(jTxtNomePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBttnPesquisarNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        JtbPaneDadosPessoais.addTab("Consulta de Clientes", jPanel3);
+        JtbPaneDadosProduto.addTab("Consulta de Produtos", jPanel3);
 
+        jBttnNovo.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnNovo.setText("+ Novo");
         jBttnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,6 +287,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
+        jBttnSalvar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnSalvar.setText("Salvar");
         jBttnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,6 +295,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
+        jBttnEditar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnEditar.setText("Editar");
         jBttnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,6 +303,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             }
         });
 
+        jBttnExcluir.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnExcluir.setText("Excluir");
         jBttnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,7 +316,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JtbPaneDadosPessoais, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(JtbPaneDadosProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(139, Short.MAX_VALUE)
                 .addComponent(jBttnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,7 +336,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtbPaneDadosPessoais)
+                .addComponent(JtbPaneDadosProduto)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBttnNovo)
@@ -349,25 +356,16 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         // botao salvar 
         desabilitarBotoes();
 
-        Cliente obj = new Cliente();
+        Produto obj = new Produto();
 
-        obj.setNome(jTxtNome.getText());
-        obj.setRg(jFormattedRG.getText());
-        obj.setCpf(jFormattedCPF.getText());
-        obj.setEmail(jTxtEmail.getText());
-        obj.setTelefone(jFormattedTxtTelefoneFixo.getText());
-        obj.setCelular(jFormattedTxtCelular.getText());
-        obj.setCep(jFormattedCEP.getText());
-        obj.setEndereco(jTxtEndereco.getText());
-        obj.setNumero(Integer.parseInt(jTxtNumeroCasa.getText()));
-        obj.setComplemento(jTxtComplemento.getText());
-        obj.setBairro(jTxtBairro.getText());
-        obj.setCidade(jTxtCidade.getText());
-        obj.setUf(jCmbBoxEstado.getSelectedItem().toString());
+        obj.setDescricao(jTxtDescricao.getText());
+        obj.setPreco(Integer.parseInt(jTxtPreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));
+        obj.setFornecedor((Fornecedor) jCmbBoxFornecedor.getSelectedItem());
 
-        ClienteDAO dao = new ClienteDAO();
+        ProdutoDAO dao = new ProdutoDAO();
 
-        dao.cadastrarCliente(obj);
+        dao.cadastrarProduto(obj);
     }//GEN-LAST:event_jBttnSalvarActionPerformed
 
     private void jBttnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnNovoActionPerformed
@@ -377,89 +375,62 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void jBttnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnEditarActionPerformed
         // botao editar
         desabilitarBotoes();
-        Cliente obj = new Cliente();
+        Produto obj = new Produto();
 
-        obj.setNome(jTxtNome.getText());
-        obj.setRg(jFormattedRG.getText());
-        obj.setCpf(jFormattedCPF.getText());
-        obj.setEmail(jTxtEmail.getText());
-        obj.setTelefone(jFormattedTxtTelefoneFixo.getText());
-        obj.setCelular(jFormattedTxtCelular.getText());
-        obj.setCep(jFormattedCEP.getText());
-        obj.setEndereco(jTxtEndereco.getText());
-        obj.setNumero(Integer.parseInt(jTxtNumeroCasa.getText()));
-        obj.setComplemento(jTxtComplemento.getText());
-        obj.setBairro(jTxtBairro.getText());
-        obj.setCidade(jTxtCidade.getText());
-        obj.setUf(jCmbBoxEstado.getSelectedItem().toString());
+        obj.setDescricao(jTxtDescricao.getText());
+        obj.setPreco(Integer.parseInt(jTxtPreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));
+        obj.setFornecedor((Fornecedor) jCmbBoxFornecedor.getSelectedItem());
 
         obj.setId(Integer.parseInt(jTxtCodigo.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
+        ProdutoDAO dao = new ProdutoDAO();
 
-        dao.alterarCliente(obj);
+        dao.alterarProduto(obj);
     }//GEN-LAST:event_jBttnEditarActionPerformed
 
-    private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
+    private void jTblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblProdutosMouseClicked
         // TODO add your handling code here:
 
         habilitarBotoes();
-        JtbPaneDadosPessoais.setSelectedIndex(0);
+        JtbPaneDadosProduto.setSelectedIndex(0);
 
-        jTxtCodigo.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 0).toString());
-        jTxtNome.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 1).toString());
-        jFormattedRG.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 2).toString());
-        jFormattedCPF.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 3).toString());
-        jTxtEmail.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 4).toString());
-        jFormattedTxtTelefoneFixo.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 5).toString());
-        jFormattedTxtCelular.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 6).toString());
-        jFormattedCEP.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 7).toString());
-        jTxtEndereco.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 8).toString());
-        jTxtNumeroCasa.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 9).toString());
-        jTxtComplemento.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 10).toString());
-        jTxtBairro.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 11).toString());
-        jTxtCidade.setText(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 12).toString());
-        jCmbBoxEstado.setSelectedItem(jTblClientes.getValueAt(jTblClientes.getSelectedRow(), 13).toString());
-    }//GEN-LAST:event_jTblClientesMouseClicked
+        jTxtCodigo.setText(jTblProdutos.getValueAt(jTblProdutos.getSelectedRow(), 0).toString());
+        jTxtDescricao.setText(jTblProdutos.getValueAt(jTblProdutos.getSelectedRow(), 1).toString());
+        jTxtPreco.setText(jTblProdutos.getValueAt(jTblProdutos.getSelectedRow(), 2).toString());
+        jTxtEstoque.setText(jTblProdutos.getValueAt(jTblProdutos.getSelectedRow(), 3).toString());
+        jCmbBoxFornecedor.setSelectedItem(jTblProdutos.getValueAt(jTblProdutos.getSelectedRow(), 4).toString());
+    }//GEN-LAST:event_jTblProdutosMouseClicked
 
     private void jBttnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnExcluirActionPerformed
         // botao excluir
         desabilitarBotoes();
 
-        Cliente obj = new Cliente();
+        Produto obj = new Produto();
 
         obj.setId(Integer.parseInt(jTxtCodigo.getText()));
 
-        ClienteDAO dao = new ClienteDAO();
+        ProdutoDAO dao = new ProdutoDAO();
 
-        dao.excluirCliente(obj);
+        dao.excluirProduto(obj);
     }//GEN-LAST:event_jBttnExcluirActionPerformed
 
     private void jTxtNomePesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNomePesquisaKeyPressed
-        String nome = "%" + jTxtNomePesquisa.getText() + "%";
+        String descricao = "%" + jTxtNomePesquisa.getText() + "%";
 
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = dao.buscaClientePorNome(nome);
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> lista = dao.buscaProdutoPorDescricao(descricao);
 
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) jTblProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Produto p : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                p.getId(),
+                p.getDescricao(),
+                p.getPreco(),
+                p.getQtd_estoque(),
+                p.getFornecedor()
             });
 
         }
@@ -468,60 +439,42 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void jBttnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnPesquisarActionPerformed
         // botao buscar cliente por nome
 
-        String nome = jTxtNome.getText();
-        Cliente obj = new Cliente();
-        ClienteDAO dao = new ClienteDAO();
+        String descricao = jTxtDescricao.getText();
+        Produto obj = new Produto();
+        ProdutoDAO dao = new ProdutoDAO();
 
-        obj = dao.consultaPorNome(nome);
+        obj = dao.consultaPorDescricao(descricao);
 
-        if (obj.getNome() != null) {
+        if (obj.getDescricao()!= null) {
 
 //Exibi os dados do obj nos campos de texto
             jTxtCodigo.setText(String.valueOf(obj.getId()));
-            jTxtNome.setText(obj.getNome());
-            jFormattedRG.setText(obj.getRg());
-            jFormattedCPF.setText(obj.getCpf());
-            jTxtEmail.setText(obj.getEmail());
-            jFormattedTxtTelefoneFixo.setText(obj.getTelefone());
-            jFormattedTxtCelular.setText(obj.getCelular());
-            jFormattedCEP.setText(obj.getCep());
-            jTxtEndereco.setText(obj.getEndereco());
-            jTxtNumeroCasa.setText(String.valueOf(obj.getNumero()));
-            jTxtComplemento.setText(obj.getComplemento());
-            jTxtBairro.setText(obj.getBairro());
-            jTxtCidade.setText(obj.getCidade());
-            jCmbBoxEstado.setSelectedItem(obj.getUf());
+            jTxtDescricao.setText(obj.getDescricao());
+            jTxtPreco.setText(String.valueOf(obj.getPreco()));
+            jTxtEstoque.setText(String.valueOf(obj.getQtd_estoque()));
+            jCmbBoxFornecedor.setSelectedItem(obj.getFornecedor());
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
         }
     }//GEN-LAST:event_jBttnPesquisarActionPerformed
 
     private void jBttnPesquisarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnPesquisarNomeActionPerformed
         // Botao pesquisar
-        String nome = "%" + jTxtNomePesquisa.getText() + "%";
+        String descricao = "%" + jTxtNomePesquisa.getText() + "%";
 
-        ClienteDAO dao = new ClienteDAO();
-        List<Cliente> lista = dao.buscaClientePorNome(nome);
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> lista = dao.buscaProdutoPorDescricao(descricao);
 
-        DefaultTableModel dados = (DefaultTableModel) jTblClientes.getModel();
+        DefaultTableModel dados = (DefaultTableModel) jTblProdutos.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Produto p : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCpf(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                p.getId(),
+                p.getDescricao(),
+                p.getPreco(),
+                p.getQtd_estoque(),
+                p.getFornecedor()
             });
 
         }
@@ -570,14 +523,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane JtbPaneDadosPessoais;
+    private javax.swing.JTabbedPane JtbPaneDadosProduto;
     private javax.swing.JButton jBttnEditar;
     private javax.swing.JButton jBttnExcluir;
     private javax.swing.JButton jBttnNovo;
     private javax.swing.JButton jBttnPesquisar;
     private javax.swing.JButton jBttnPesquisarNome;
     private javax.swing.JButton jBttnSalvar;
-    private javax.swing.JComboBox<String> jCmbBoxEstado;
+    private javax.swing.JComboBox<String> jCmbBoxFornecedor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -589,11 +542,11 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTblClientes;
-    private javax.swing.JTextField jTxtBairro;
-    private javax.swing.JTextField jTxtCidade;
+    private javax.swing.JTable jTblProdutos;
     private javax.swing.JTextField jTxtCodigo;
-    private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtDescricao;
+    private javax.swing.JTextField jTxtEstoque;
     private javax.swing.JTextField jTxtNomePesquisa;
+    private javax.swing.JTextField jTxtPreco;
     // End of variables declaration//GEN-END:variables
 }

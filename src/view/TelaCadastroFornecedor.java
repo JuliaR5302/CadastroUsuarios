@@ -40,22 +40,22 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Fornecedor c : lista) {
+        for (Fornecedor f : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCnpj(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCnpj(),
+                f.getEmail(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getUf()
             });
 
         }
@@ -79,7 +79,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        JtbPaneDadosPessoais = new javax.swing.JTabbedPane();
+        JtbPaneDadosFornecedor = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTxtCodigo = new javax.swing.JTextField();
@@ -122,7 +122,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jBttnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Cliente");
+        setTitle("Cadastro de Fornecedores");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -151,10 +151,15 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("Código:");
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Nome:");
 
+        jTxtNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jBttnPesquisar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisar.setText("Pesquisar");
         jBttnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,8 +167,12 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("E-mail:");
 
+        jTxtEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Celular:");
 
         try {
@@ -172,6 +181,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel6.setText("Telefone(Fixo):");
 
         try {
@@ -180,6 +190,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("CEP:");
 
         try {
@@ -193,20 +204,36 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("Endereço:");
 
+        jTxtEndereco.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel9.setText("N°:");
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel10.setText("Bairro:");
 
+        jTxtBairro.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel11.setText("Cidade:");
 
+        jTxtCidade.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel12.setText("Complemento:");
 
+        jTxtComplemento.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel13.setText("UF:");
 
+        jCmbBoxEstado.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jCmbBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Estado:", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel14.setText("RG:");
 
         try {
@@ -215,6 +242,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel15.setText("CNPJ:");
 
         try {
@@ -269,7 +297,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTxtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 361, Short.MAX_VALUE))))
+                                .addGap(0, 360, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -351,16 +379,19 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        JtbPaneDadosPessoais.addTab("Dados Fornecedor", jPanel2);
+        JtbPaneDadosFornecedor.addTab("Dados Fornecedor", jPanel2);
 
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel16.setText("Nome:");
 
+        jTxtNomePesquisa.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTxtNomePesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTxtNomePesquisaKeyPressed(evt);
             }
         });
 
+        jBttnPesquisarNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisarNome.setText("Pesquisar");
         jBttnPesquisarNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,6 +399,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jTblFornecedores.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTblFornecedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
@@ -408,12 +440,13 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                     .addComponent(jTxtNomePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBttnPesquisarNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        JtbPaneDadosPessoais.addTab("Consulta de Fornecedor", jPanel3);
+        JtbPaneDadosFornecedor.addTab("Consulta de Fornecedor", jPanel3);
 
+        jBttnNovo.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnNovo.setText("+ Novo");
         jBttnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,6 +454,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jBttnSalvar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnSalvar.setText("Salvar");
         jBttnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -428,6 +462,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jBttnEditar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnEditar.setText("Editar");
         jBttnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,6 +470,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             }
         });
 
+        jBttnExcluir.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnExcluir.setText("Excluir");
         jBttnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,7 +483,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(JtbPaneDadosPessoais)
+            .addComponent(JtbPaneDadosFornecedor)
             .addGroup(layout.createSequentialGroup()
                 .addGap(293, 293, 293)
                 .addComponent(jBttnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -467,7 +503,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JtbPaneDadosPessoais)
+                .addComponent(JtbPaneDadosFornecedor)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBttnNovo)
@@ -542,7 +578,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         habilitarBotoes();
-        JtbPaneDadosPessoais.setSelectedIndex(0);
+        JtbPaneDadosFornecedor.setSelectedIndex(0);
 
         jTxtCodigo.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 0).toString());
         jTxtNome.setText(jTblFornecedores.getValueAt(jTblFornecedores.getSelectedRow(), 1).toString());
@@ -582,22 +618,22 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Fornecedor c : lista) {
+        for (Fornecedor f : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCnpj(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCnpj(),
+                f.getEmail(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getUf()
             });
 
         }
@@ -644,22 +680,22 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         DefaultTableModel dados = (DefaultTableModel) jTblFornecedores.getModel();
         dados.setNumRows(0);
 
-        for (Fornecedor c : lista) {
+        for (Fornecedor f : lista) {
             dados.addRow(new Object[]{
-                c.getId(),
-                c.getNome(),
-                c.getRg(),
-                c.getCnpj(),
-                c.getEmail(),
-                c.getTelefone(),
-                c.getCelular(),
-                c.getCep(),
-                c.getEndereco(),
-                c.getNumero(),
-                c.getComplemento(),
-                c.getBairro(),
-                c.getCidade(),
-                c.getUf()
+                f.getId(),
+                f.getNome(),
+                f.getRg(),
+                f.getCnpj(),
+                f.getEmail(),
+                f.getTelefone(),
+                f.getCelular(),
+                f.getCep(),
+                f.getEndereco(),
+                f.getNumero(),
+                f.getComplemento(),
+                f.getBairro(),
+                f.getCidade(),
+                f.getUf()
             });
 
         }
@@ -723,7 +759,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane JtbPaneDadosPessoais;
+    private javax.swing.JTabbedPane JtbPaneDadosFornecedor;
     private javax.swing.JButton jBttnEditar;
     private javax.swing.JButton jBttnExcluir;
     private javax.swing.JButton jBttnNovo;

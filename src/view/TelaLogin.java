@@ -40,6 +40,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 TelaPrincipal tp = new TelaPrincipal();
                 tp.setVisible(true);
                 TelaPrincipal.jMnCadUsuario.setEnabled(false);
+                TelaPrincipal.jMnCadCliente.setEnabled(false);
+                TelaPrincipal.jMnCadFornecedor.setEnabled(false);
+                TelaPrincipal.jMnCadProduto.setEnabled(false);
                 this.dispose();
                 }
             }else{
@@ -81,11 +84,15 @@ public class TelaLogin extends javax.swing.JFrame {
         jTxtLblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Usuário: ");
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setText("Senha: ");
 
+        jBtnLogar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jBtnLogar.setMnemonic('l');
         jBtnLogar.setText("Logar");
         jBtnLogar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +123,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jTxtLblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnLogar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

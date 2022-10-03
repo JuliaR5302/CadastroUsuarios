@@ -36,10 +36,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Tela Principal");
 
         jMenu1.setText("Arquivo");
 
         jMnCadUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadUsuario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMnCadUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usario.png"))); // NOI18N
         jMnCadUsuario.setText("Cadastro de Usuário");
         jMnCadUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnCadUsuario);
 
         jMnCadCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMnCadCliente.setText("Cadastro de Cliente");
         jMnCadCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnCadCliente);
 
         jMnCadFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadFornecedor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMnCadFornecedor.setText("Cadastro de Fornecedores");
         jMnCadFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMnCadFornecedor);
 
         jMnCadProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMnCadProduto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMnCadProduto.setText("Cadastro de Produtos");
         jMnCadProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

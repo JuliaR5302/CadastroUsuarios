@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import model.Fornecedor;
 import model.Produto;
 
 /**
@@ -117,7 +118,7 @@ public class ProdutoDAO {
             List<Produto> lista = new ArrayList<>();
 
             //2 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos";
+            String sql = "select * from produtos"; //Para pegar os fornecedores do banco de dados, precisária mudar o sql.
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
@@ -128,7 +129,7 @@ public class ProdutoDAO {
                 obj.setDescricao(rs.getString("descricao"));
                 obj.setPreco(rs.getDouble("preco"));
                 obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString("fornecedor"));
+                obj.setFornecedor(rs.getString(getInt("fornecedor"))); // Não estou conseguindo puxar os fornecedores do banco de dados.
 
                 lista.add(obj);
             }
@@ -144,7 +145,7 @@ public class ProdutoDAO {
     }
     
    //metodo consultaProduto por Nome
-    public Produto consultaPorNome(String nome) {
+    public Produto consultaPorDescricao(String nome) {
         try {
             //1 passo - criar o sql , organizar e executar.
             String sql = "select * from produtos where nome = ?";
@@ -160,7 +161,7 @@ public class ProdutoDAO {
                 obj.setDescricao(rs.getString("descricao"));
                 obj.setPreco(rs.getDouble("preco"));
                 obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString("fornecedor"));
+                obj.setFornecedor(rs.getString(getInt("fornecedor")));
             }
 
             return obj;
@@ -188,7 +189,7 @@ public class ProdutoDAO {
                 obj.setDescricao(rs.getString("descricao"));
                 obj.setPreco(rs.getDouble("preco"));
                 obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString("fornecedor"));
+                obj.setFornecedor(rs.getString(getInt("fornecedor")));
             }
 
             return obj;
@@ -200,16 +201,16 @@ public class ProdutoDAO {
     } 
     
     //Metodo buscarprodutosPorNome - retorna uma lista
-    public List<Produto> buscaProdutoPorNome(String nome) {
+    public List<Produto> buscaProdutoPorDescricao(String descricao) {
         try {
 
             //1 passo criar a lista
             List<Produto> lista = new ArrayList<>();
 
             //2 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos where nome like ?";
+            String sql = "select * from produtos where descricao like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
+            stmt.setString(1, descricao);
 
             ResultSet rs = stmt.executeQuery();
 
@@ -220,7 +221,7 @@ public class ProdutoDAO {
                 obj.setDescricao(rs.getString("descricao"));
                 obj.setPreco(rs.getDouble("preco"));
                 obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString("fornecedor"));
+                obj.setFornecedor(rs.getString(getInt("fornecedor")));
 
                 lista.add(obj);
             }

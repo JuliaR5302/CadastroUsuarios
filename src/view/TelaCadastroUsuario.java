@@ -116,6 +116,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         jBtnCadastrar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
+        jBttnGerarSenha = new javax.swing.JButton();
         Consulta = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableUsuario = new javax.swing.JTable();
@@ -124,26 +125,37 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         jBtnBusca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Usuário");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Dados.setPreferredSize(new java.awt.Dimension(500, 355));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel1.setText("Nome: ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTxtNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel2.setText("Login:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel3.setText("Senha:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setText("Perfil: ");
 
+        jTxtLogin.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jTxtSenha.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jCbxPerfil.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jCbxPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuário", "Administrador" }));
 
+        jBtnCadastrar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBtnCadastrar.setMnemonic('c');
         jBtnCadastrar.setText("Cadastrar");
         jBtnCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +164,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        jBtnEditar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBtnEditar.setMnemonic('e');
         jBtnEditar.setText("Editar");
         jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -160,11 +173,20 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             }
         });
 
+        jBtnExcluir.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBtnExcluir.setMnemonic('d');
         jBtnExcluir.setText("Deletar");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluirActionPerformed(evt);
+            }
+        });
+
+        jBttnGerarSenha.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        jBttnGerarSenha.setText("Gerar  Senha");
+        jBttnGerarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBttnGerarSenhaActionPerformed(evt);
             }
         });
 
@@ -175,12 +197,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jBtnCadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBtnEditar)
-                        .addGap(95, 95, 95)
-                        .addComponent(jBtnExcluir))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -198,8 +214,18 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                            .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jBtnCadastrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnEditar)
+                        .addGap(95, 95, 95)
+                        .addComponent(jBtnExcluir)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBttnGerarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(171, 171, 171))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jBtnCadastrar, jBtnEditar, jBtnExcluir});
@@ -228,7 +254,9 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(jBtnExcluir)
                     .addComponent(jBtnEditar)
                     .addComponent(jBtnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(225, 225, 225))
+                .addGap(18, 18, 18)
+                .addComponent(jBttnGerarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jBtnCadastrar, jBtnEditar, jBtnExcluir});
@@ -240,18 +268,19 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             .addGroup(DadosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         DadosLayout.setVerticalGroup(
             DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         JPanielDadosUsuario.addTab("Dados Usuários", Dados);
 
+        jTableUsuario.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -282,14 +311,17 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableUsuario);
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Nome: ");
 
+        jTxtFiltroCliente.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTxtFiltroCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTxtFiltroClienteKeyPressed(evt);
             }
         });
 
+        jBtnBusca.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBtnBusca.setText("Buscar");
 
         javax.swing.GroupLayout ConsultaLayout = new javax.swing.GroupLayout(Consulta);
@@ -317,7 +349,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                     .addComponent(jTxtFiltroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnBusca))
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -331,9 +363,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(JPanielDadosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(JPanielDadosUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -413,9 +443,15 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         }
     }    
         listar();
-        
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
+    private void jBttnGerarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnGerarSenhaActionPerformed
+        TelaGerarSenha tela = new TelaGerarSenha();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jBttnGerarSenhaActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -463,6 +499,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jBtnCadastrar;
     private javax.swing.JButton jBtnEditar;
     private javax.swing.JButton jBtnExcluir;
+    private javax.swing.JButton jBttnGerarSenha;
     private javax.swing.JComboBox<String> jCbxPerfil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -475,6 +512,6 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTxtFiltroCliente;
     private javax.swing.JTextField jTxtLogin;
     private javax.swing.JTextField jTxtNome;
-    private javax.swing.JTextField jTxtSenha;
+    public static javax.swing.JTextField jTxtSenha;
     // End of variables declaration//GEN-END:variables
 }

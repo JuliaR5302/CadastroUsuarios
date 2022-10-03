@@ -151,10 +151,15 @@ public class TelaCliente extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel2.setText("Código:");
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel3.setText("Nome:");
 
+        jTxtNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jBttnPesquisar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisar.setText("Pesquisar");
         jBttnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,8 +167,12 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel4.setText("E-mail:");
 
+        jTxtEmail.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel5.setText("Celular:");
 
         try {
@@ -172,6 +181,7 @@ public class TelaCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel6.setText("Telefone(Fixo):");
 
         try {
@@ -180,6 +190,7 @@ public class TelaCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel7.setText("CEP:");
 
         try {
@@ -193,20 +204,36 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel8.setText("Endereço:");
 
+        jTxtEndereco.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel9.setText("N°:");
 
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel10.setText("Bairro:");
 
+        jTxtBairro.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel11.setText("Cidade:");
 
+        jTxtCidade.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel12.setText("Complemento:");
 
+        jTxtComplemento.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel13.setText("UF:");
 
+        jCmbBoxEstado.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jCmbBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Estado:", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel14.setText("RG:");
 
         try {
@@ -215,6 +242,7 @@ public class TelaCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jLabel15.setText("CPF:");
 
         try {
@@ -269,7 +297,7 @@ public class TelaCliente extends javax.swing.JFrame {
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTxtNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 361, Short.MAX_VALUE))))
+                                .addGap(0, 360, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -289,18 +317,16 @@ public class TelaCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13)
-                                .addGap(4, 4, 4)
-                                .addComponent(jCmbBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel12))
+                            .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addGap(4, 4, 4)
+                        .addComponent(jCmbBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -348,7 +374,7 @@ public class TelaCliente extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addComponent(jFormattedCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel14))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         JtbPaneDadosPessoais.addTab("Dados Pessoais", jPanel2);
@@ -361,6 +387,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jBttnPesquisarNome.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnPesquisarNome.setText("Pesquisar");
         jBttnPesquisarNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,6 +395,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jTblClientes.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
@@ -408,12 +436,13 @@ public class TelaCliente extends javax.swing.JFrame {
                     .addComponent(jTxtNomePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBttnPesquisarNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         JtbPaneDadosPessoais.addTab("Consulta de Clientes", jPanel3);
 
+        jBttnNovo.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnNovo.setText("+ Novo");
         jBttnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -421,6 +450,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jBttnSalvar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnSalvar.setText("Salvar");
         jBttnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -428,6 +458,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jBttnEditar.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnEditar.setText("Editar");
         jBttnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -435,6 +466,7 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jBttnExcluir.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jBttnExcluir.setText("Excluir");
         jBttnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

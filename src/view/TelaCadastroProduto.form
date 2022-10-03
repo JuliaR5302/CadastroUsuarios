@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Cadastro de Cliente"/>
+    <Property name="title" type="java.lang.String" value="Cadastro de Produtos"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -28,7 +28,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" max="32767" attributes="0"/>
-          <Component id="JtbPaneDadosPessoais" alignment="0" pref="0" max="32767" attributes="0"/>
+          <Component id="JtbPaneDadosProduto" alignment="0" pref="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="139" max="32767" attributes="0"/>
               <Component id="jBttnNovo" linkSize="4" min="-2" pref="78" max="-2" attributes="0"/>
@@ -47,7 +47,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="JtbPaneDadosPessoais" max="32767" attributes="0"/>
+              <Component id="JtbPaneDadosProduto" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jBttnNovo" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -94,20 +94,20 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="24" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cadastro do Cliente"/>
+            <Property name="text" type="java.lang.String" value="Cadastro de Produto"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JTabbedPane" name="JtbPaneDadosPessoais">
+    <Container class="javax.swing.JTabbedPane" name="JtbPaneDadosProduto">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel2">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Dados Pessoais">
-                <Property name="tabTitle" type="java.lang.String" value="Dados Pessoais"/>
+              <JTabbedPaneConstraints tabName="Dados de Produto">
+                <Property name="tabTitle" type="java.lang.String" value="Dados de Produto"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -117,45 +117,43 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="897" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTxtCodigo" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jTxtCidade" min="-2" pref="151" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="jTxtNome" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jBttnPesquisar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="420" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCmbBoxEstado" min="-2" pref="511" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTxtBairro" min="-2" pref="135" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="373" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jTxtPreco" min="-2" pref="170" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jTxtEstoque" min="-2" pref="170" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTxtDescricao" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jTxtCodigo" min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jCmbBoxFornecedor" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jBttnPesquisar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="362" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -170,22 +168,22 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jBttnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTxtEstoque" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jCmbBoxFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCmbBoxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="116" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -193,6 +191,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="C&#xf3;digo:"/>
               </Properties>
             </Component>
@@ -200,13 +201,19 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nome:"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTxtNome">
+            <Component class="javax.swing.JTextField" name="jTxtDescricao">
             </Component>
             <Component class="javax.swing.JButton" name="jBttnPesquisar">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
@@ -215,55 +222,43 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Bairro:"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTxtBairro">
+            <Component class="javax.swing.JTextField" name="jTxtPreco">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cidade:"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Qtd. Estoque:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTxtCidade">
+            <Component class="javax.swing.JTextField" name="jTxtEstoque">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Fornecedor:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jCmbBoxEstado">
+            <Component class="javax.swing.JComboBox" name="jCmbBoxFornecedor">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="28">
-                    <StringItem index="0" value="Selecione um Estado:"/>
-                    <StringItem index="1" value="AC"/>
-                    <StringItem index="2" value="AL"/>
-                    <StringItem index="3" value="AP"/>
-                    <StringItem index="4" value="AM"/>
-                    <StringItem index="5" value="BA"/>
-                    <StringItem index="6" value="CE"/>
-                    <StringItem index="7" value="DF"/>
-                    <StringItem index="8" value="ES"/>
-                    <StringItem index="9" value="GO"/>
-                    <StringItem index="10" value="MA"/>
-                    <StringItem index="11" value="MT"/>
-                    <StringItem index="12" value="MS"/>
-                    <StringItem index="13" value="MG"/>
-                    <StringItem index="14" value="PA"/>
-                    <StringItem index="15" value="PB"/>
-                    <StringItem index="16" value="PR"/>
-                    <StringItem index="17" value="PE"/>
-                    <StringItem index="18" value="PI"/>
-                    <StringItem index="19" value="RJ"/>
-                    <StringItem index="20" value="RN"/>
-                    <StringItem index="21" value="RS"/>
-                    <StringItem index="22" value="RO"/>
-                    <StringItem index="23" value="RR"/>
-                    <StringItem index="24" value="SC"/>
-                    <StringItem index="25" value="SP"/>
-                    <StringItem index="26" value="SE"/>
-                    <StringItem index="27" value="TO"/>
+                  <StringArray count="4">
+                    <StringItem index="0" value="Selecione um fornecedor:"/>
+                    <StringItem index="1" value="Fronecedor1"/>
+                    <StringItem index="2" value="Fornecedor2"/>
+                    <StringItem index="3" value="Fornecedor3"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -276,8 +271,8 @@
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Consulta de Clientes">
-                <Property name="tabTitle" type="java.lang.String" value="Consulta de Clientes"/>
+              <JTabbedPaneConstraints tabName="Consulta de Produtos">
+                <Property name="tabTitle" type="java.lang.String" value="Consulta de Produtos"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -295,7 +290,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jBttnPesquisarNome" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" pref="766" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="770" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -311,7 +306,7 @@
                           <Component id="jBttnPesquisarNome" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="216" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="220" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -320,16 +315,27 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTxtNomePesquisa">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTxtNomePesquisaKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jBttnPesquisarNome">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pesquisar"/>
               </Properties>
               <Events>
@@ -343,20 +349,23 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTblClientes">
+                <Component class="javax.swing.JTable" name="jTblProdutos">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="1">
                         <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
-                        <Column editable="true" title="Nome" type="java.lang.Object"/>
-                        <Column editable="true" title="RG" type="java.lang.Object"/>
-                        <Column editable="true" title="CPF" type="java.lang.Object"/>
-                        <Column editable="true" title="E-mail" type="java.lang.Object"/>
+                        <Column editable="true" title="Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
+                        <Column editable="true" title="Pre&#xe7;o" type="java.lang.Object"/>
+                        <Column editable="true" title="Qtd. Estoque" type="java.lang.Object"/>
+                        <Column editable="true" title="Fornecefor" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTblClientesMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTblProdutosMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -367,6 +376,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="jBttnNovo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="+ Novo"/>
       </Properties>
       <Events>
@@ -375,6 +387,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBttnSalvar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
@@ -383,6 +398,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBttnEditar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
       <Events>
@@ -391,6 +409,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jBttnExcluir">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
       <Events>
