@@ -515,14 +515,14 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
     private void jCmbBoxFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCmbBoxFornecedorMouseClicked
         //Carregando combobox fornecedores
-        jCmbBoxFornecedor.removeAll();
-        FornecedorDAO dao = new FornecedorDAO();
-        List<Fornecedor>listadefornecedores = dao.listarFornecedores();
-        jCmbBoxFornecedor.removeAll();
+        //jCmbBoxFornecedor.removeAll();
+        //FornecedorDAO dao = new FornecedorDAO();
+        //List<Fornecedor>listadefornecedores = dao.listarFornecedores();
+        //jCmbBoxFornecedor.removeAll();
         
-        for (Fornecedor f : listadefornecedores){
-            jCmbBoxFornecedor.addItem(f.toString());
-        }
+        //for (Fornecedor f : listadefornecedores){
+        //    jCmbBoxFornecedor.addItem(f.toString());
+        //}
     }//GEN-LAST:event_jCmbBoxFornecedorMouseClicked
 
     /**
