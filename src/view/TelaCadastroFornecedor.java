@@ -22,7 +22,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jBttnSalvar.setEnabled(true);
         jBttnExcluir.setEnabled(true);
         jBttnEditar.setEnabled(true);
-
     }
 
     public void desabilitarBotoes() {
@@ -30,7 +29,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
         jBttnSalvar.setEnabled(false);
         jBttnExcluir.setEnabled(false);
         jBttnEditar.setEnabled(false);
-
     }
 
     public void listar() {
@@ -57,9 +55,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 f.getCidade(),
                 f.getUf()
             });
-
         }
-
     }
     /**
      * Creates new form TelaCliente
@@ -575,8 +571,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jBttnEditarActionPerformed
 
     private void jTblFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblFornecedoresMouseClicked
-        // TODO add your handling code here:
-
         habilitarBotoes();
         JtbPaneDadosFornecedor.setSelectedIndex(0);
 
@@ -635,7 +629,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 f.getCidade(),
                 f.getUf()
             });
-
         }
     }//GEN-LAST:event_jTxtNomePesquisaKeyPressed
 
@@ -650,7 +643,7 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
 
         if (obj.getNome() != null) {
 
-//Exibi os dados do obj nos campos de texto
+        //Exibi os dados do obj nos campos de texto
             jTxtCodigo.setText(String.valueOf(obj.getId()));
             jTxtNome.setText(obj.getNome());
             jFormattedRG.setText(obj.getRg());
@@ -697,7 +690,6 @@ public class TelaCadastroFornecedor extends javax.swing.JFrame {
                 f.getCidade(),
                 f.getUf()
             });
-
         }
     }//GEN-LAST:event_jBttnPesquisarNomeActionPerformed
 

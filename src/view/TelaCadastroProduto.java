@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.FornecedorDAO;
 import controller.ProdutoDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -47,7 +48,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 p.getDescricao(),
                 p.getPreco(),
                 p.getQtd_estoque(),
-                p.getFornecedor()
+                p.getFornecedor().getNome()
             });
 
         }
@@ -149,7 +150,22 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         jLabel13.setText("Fornecedor:");
 
         jCmbBoxFornecedor.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jCmbBoxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um fornecedor:", "Fronecedor1", "Fornecedor2", "Fornecedor3" }));
+        jCmbBoxFornecedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um fornecedor:" }));
+        jCmbBoxFornecedor.setToolTipText("");
+        jCmbBoxFornecedor.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jCmbBoxFornecedorAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jCmbBoxFornecedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCmbBoxFornecedorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,7 +254,7 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "Preço", "Qtd. Estoque", "Fornecefor"
+                "Código", "Descrição", "Preço", "Qtd. Estoque", "Fornecedor"
             }
         ));
         jTblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -361,10 +377,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         obj.setDescricao(jTxtDescricao.getText());
         obj.setPreco(Integer.parseInt(jTxtPreco.getText()));
         obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));
-        obj.setFornecedor((Fornecedor) jCmbBoxFornecedor.getSelectedItem());
+        
+        //Criar um objeto de fornecedor
+        Fornecedor f = new Fornecedor();
+        f = (Fornecedor) jCmbBoxFornecedor.getSelectedItem();
+        obj.setFornecedor(f);
 
         ProdutoDAO dao = new ProdutoDAO();
-
         dao.cadastrarProduto(obj);
     }//GEN-LAST:event_jBttnSalvarActionPerformed
 
@@ -390,8 +409,6 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jBttnEditarActionPerformed
 
     private void jTblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblProdutosMouseClicked
-        // TODO add your handling code here:
-
         habilitarBotoes();
         JtbPaneDadosProduto.setSelectedIndex(0);
 
@@ -416,10 +433,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jBttnExcluirActionPerformed
 
     private void jTxtNomePesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtNomePesquisaKeyPressed
-        String descricao = "%" + jTxtNomePesquisa.getText() + "%";
+        String nome = "%" + jTxtNomePesquisa.getText() + "%";
 
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> lista = dao.buscaProdutoPorDescricao(descricao);
+        List<Produto> lista = dao.listarProdutoPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) jTblProdutos.getModel();
         dados.setNumRows(0);
@@ -439,15 +456,15 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
     private void jBttnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnPesquisarActionPerformed
         // botao buscar cliente por nome
 
-        String descricao = jTxtDescricao.getText();
+        String nome = jTxtDescricao.getText();
         Produto obj = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
 
-        obj = dao.consultaPorDescricao(descricao);
+        obj = dao.buscarProdutoporNome(nome);
 
         if (obj.getDescricao()!= null) {
 
-//Exibi os dados do obj nos campos de texto
+        //Exibi os dados do obj nos campos de texto
             jTxtCodigo.setText(String.valueOf(obj.getId()));
             jTxtDescricao.setText(obj.getDescricao());
             jTxtPreco.setText(String.valueOf(obj.getPreco()));
@@ -460,10 +477,10 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
 
     private void jBttnPesquisarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBttnPesquisarNomeActionPerformed
         // Botao pesquisar
-        String descricao = "%" + jTxtNomePesquisa.getText() + "%";
+        String nome = "%" + jTxtNomePesquisa.getText() + "%";
 
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> lista = dao.buscaProdutoPorDescricao(descricao);
+        List<Produto> lista = dao.listarProdutoPorNome(nome);
 
         DefaultTableModel dados = (DefaultTableModel) jTblProdutos.getModel();
         dados.setNumRows(0);
@@ -476,15 +493,37 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
                 p.getQtd_estoque(),
                 p.getFornecedor()
             });
-
         }
     }//GEN-LAST:event_jBttnPesquisarNomeActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
         listar();
         desabilitarBotoes();
     }//GEN-LAST:event_formWindowActivated
+
+    private void jCmbBoxFornecedorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jCmbBoxFornecedorAncestorAdded
+        //Carregando combobox fornecedores
+        jCmbBoxFornecedor.removeAll();
+        FornecedorDAO dao = new FornecedorDAO();
+        List<Fornecedor>listadefornecedores = dao.listarFornecedores();
+        jCmbBoxFornecedor.removeAll();
+        
+        for (Fornecedor f : listadefornecedores){
+            jCmbBoxFornecedor.addItem(f.toString());
+        }
+    }//GEN-LAST:event_jCmbBoxFornecedorAncestorAdded
+
+    private void jCmbBoxFornecedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCmbBoxFornecedorMouseClicked
+        //Carregando combobox fornecedores
+        jCmbBoxFornecedor.removeAll();
+        FornecedorDAO dao = new FornecedorDAO();
+        List<Fornecedor>listadefornecedores = dao.listarFornecedores();
+        jCmbBoxFornecedor.removeAll();
+        
+        for (Fornecedor f : listadefornecedores){
+            jCmbBoxFornecedor.addItem(f.toString());
+        }
+    }//GEN-LAST:event_jCmbBoxFornecedorMouseClicked
 
     /**
      * @param args the command line arguments

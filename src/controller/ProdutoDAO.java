@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,29 +28,29 @@ public class ProdutoDAO {
     }
 
     public ProdutoDAO() {
-        
     }
     
     //Metodo cadastrarProdutos
-    public void cadastrarProduto(Produto obj) {
+    public void cadastrarProduto(Produto produto) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "insert into produtos (nome,rg,cnpj,email,telefone,celular,cep,endereco,numero,complemento,bairro,cidade,estado)  values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into produtos (descricao, preco, qtd_estoque, fornecedor_id)  values (?,?,?,?)";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, obj.getDescricao());
-            stmt.setDouble(2, obj.getPreco());
-            stmt.setInt(3, obj.getQtd_estoque());
+            stmt.setString(1, produto.getDescricao());
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setInt(3, produto.getQtd_estoque());
             
-            stmt.setInt(4, obj.getFornecedor().getId());
+            stmt.setInt(4, produto.getFornecedor().getId());
 
             //3 passo - executar o comando sql
             stmt.execute();
             stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Produto cadastrado com Sucesso!");
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro);
@@ -59,26 +60,27 @@ public class ProdutoDAO {
     }
     
      //Metodo AlterarProduto
-    public void alterarProduto(Produto obj) {
+    public void alterarProduto(Produto produto) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
-            String sql = "update produtos set  nome=?, rg=?, cnpj=?, email=?, telefone=?, celular=?, cep=?, endereco=?, numero=?,complemento=?,bairro=?,cidade=?, estado=?  where id =?";
+            String sql = "update produtos set descricao=?, preco=?, qtd_estoque=?, fornecedor_id=? where id=?";
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, obj.getDescricao());
-            stmt.setDouble(2, obj.getPreco());
-            stmt.setInt(3, obj.getQtd_estoque());
-            stmt.setInt(4, obj.getFornecedor().getId());
+            stmt.setString(1, produto.getDescricao());
+            stmt.setDouble(2, produto.getPreco());
+            stmt.setInt(3, produto.getQtd_estoque());
+            stmt.setInt(4, produto.getFornecedor().getId());
 
-            stmt.setInt(5, obj.getId());
+            stmt.setInt(5, produto.getId());
 
             //3 passo - executar o comando sql
             stmt.execute();
             stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Alterado com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Produto alterado com Sucesso!");
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro);
@@ -87,7 +89,8 @@ public class ProdutoDAO {
     }
     
     //Metodo ExcluirProduto
-    public void excluirProduto(Produto obj) {
+    public void excluirProduto(Produto produto) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
@@ -95,13 +98,13 @@ public class ProdutoDAO {
 
             //2 passo - conectar o banco de dados e organizar o comando sql
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, obj.getId());
+            stmt.setInt(1, produto.getId());
 
             //3 passo - executar o comando sql
             stmt.execute();
             stmt.close();
 
-            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+            JOptionPane.showMessageDialog(null, "Produto excluido com Sucesso!");
 
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro);
@@ -112,24 +115,28 @@ public class ProdutoDAO {
     
     //Metodo Listar Todos Produto
     public List<Produto> listarProdutos() {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo criar a lista
             List<Produto> lista = new ArrayList<>();
 
             //2 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos"; //Para pegar os fornecedores do banco de dados, precisária mudar o sql.
+            String sql = "select p.id, p.descricao, p.preco, p.qtd_estoque, f.nome from produtos as p inner join fornecedores as f on (p.fornecedor_id = f.id)";
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Produto obj = new Produto();
+                Fornecedor f = new Fornecedor();
 
-                obj.setId(rs.getInt("id"));
-                obj.setDescricao(rs.getString("descricao"));
-                obj.setPreco(rs.getDouble("preco"));
-                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString(getInt("fornecedor"))); // Não estou conseguindo puxar os fornecedores do banco de dados.
+                obj.setId(rs.getInt("p.id"));
+                obj.setDescricao(rs.getString("p.descricao"));
+                obj.setPreco(rs.getDouble("p.preco"));
+                obj.setQtd_estoque(rs.getInt("p.qtd_estoque"));
+                f.setNome(rs.getString(("f.nome")));
+                
+                obj.setFornecedor(f);
 
                 lista.add(obj);
             }
@@ -144,94 +151,105 @@ public class ProdutoDAO {
 
     }
     
-   //metodo consultaProduto por Nome
-    public Produto consultaPorDescricao(String nome) {
+   //metodo listarProduto por Nome(Descricao) - retorna uma lista
+    public List <Produto> listarProdutoPorNome(String nome){
+        con = ModuleConexao.conectar();
         try {
+            
+            //1° passo criar a lista
+            List<Produto> lista = new ArrayList<>();
+            
             //1 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos where nome = ?";
+            String sql = "select p.id, p.descricao. p.preco, p.qtd_estoque, f.nome from produtos as p inner join fornecedores as f on (p.fornecedor_id = f.id) where p.descricao like ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nome);
 
             ResultSet rs = stmt.executeQuery();
             Produto obj = new Produto();
+            Fornecedor f = new Fornecedor();
 
             if (rs.next()) {
 
-                obj.setId(rs.getInt("id"));
-                obj.setDescricao(rs.getString("descricao"));
-                obj.setPreco(rs.getDouble("preco"));
-                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString(getInt("fornecedor")));
-            }
-
-            return obj;
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
-            return null;
-        }
-    } 
-    
-  //metodo busca Produto por Fornecedor
-    public Produto buscaporFornecedor(String fornecedor) {
-        try {
-            //1 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos where fornecedor = ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, fornecedor);
-
-            ResultSet rs = stmt.executeQuery();
-            Produto obj = new Produto();
-
-            if (rs.next()) {
-
-                obj.setId(rs.getInt("id"));
-                obj.setDescricao(rs.getString("descricao"));
-                obj.setPreco(rs.getDouble("preco"));
-                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString(getInt("fornecedor")));
-            }
-
-            return obj;
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
-            return null;
-        }
-    } 
-    
-    //Metodo buscarprodutosPorNome - retorna uma lista
-    public List<Produto> buscaProdutoPorDescricao(String descricao) {
-        try {
-
-            //1 passo criar a lista
-            List<Produto> lista = new ArrayList<>();
-
-            //2 passo - criar o sql , organizar e executar.
-            String sql = "select * from produtos where descricao like ?";
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, descricao);
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Produto obj = new Produto();
-
-                obj.setId(rs.getInt("id"));
-                obj.setDescricao(rs.getString("descricao"));
-                obj.setPreco(rs.getDouble("preco"));
-                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
-                obj.setFornecedor(rs.getString(getInt("fornecedor")));
-
+                obj.setId(rs.getInt("p.id"));
+                obj.setDescricao(rs.getString("p.descricao"));
+                obj.setPreco(rs.getDouble("p.preco"));
+                obj.setQtd_estoque(rs.getInt("p.qtd_estoque"));
+                f.setNome(rs.getString(("f.nome")));
+                
+                obj.setFornecedor(f);
+                
                 lista.add(obj);
             }
 
             return lista;
 
-        } catch (SQLException erro) {
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+            return null;
+        }
+    } 
+    
+  //metodo buscar Produto por Fornecedor
+    public Produto buscarporFornecedor(String fornecedor) {
+        con = ModuleConexao.conectar();
+        try {
+            //1 passo - criar o sql , organizar e executar.
+            String sql = "select p.id, p.descricao. p.preco, p.qtd_estoque, f.nome from produtos as p inner join fornecedores as f on (p.fornecedor_id = f.id) where f.nome like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, fornecedor);
 
-            JOptionPane.showMessageDialog(null, "Erro :" + erro);
+            ResultSet rs = stmt.executeQuery();
+            Produto obj = new Produto();
+            Fornecedor f = new Fornecedor();
+
+            if (rs.next()) {
+
+                obj.setId(rs.getInt("id"));
+                obj.setDescricao(rs.getString("descricao"));
+                obj.setPreco(rs.getDouble("preco"));
+                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
+                f.setNome(rs.getString(("f.nome")));
+                
+                obj.setFornecedor(f);
+            }
+
+            return obj;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
             return null;
         }
     }
+    
+    //metodo buscar Produto por Nome
+    public Produto buscarProdutoporNome(String nome) {
+        con = ModuleConexao.conectar();
+        try {
+            //1 passo - criar o sql , organizar e executar.
+            String sql = "select p.id, p.descricao. p.preco, p.qtd_estoque, f.nome from produtos as p inner join fornecedores as f on (p.fornecedor_id = f.id) where p.descricao like ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+
+            ResultSet rs = stmt.executeQuery();
+            Produto obj = new Produto();
+            Fornecedor f = new Fornecedor();
+
+            if (rs.next()) {
+
+                obj.setId(rs.getInt("id"));
+                obj.setDescricao(rs.getString("descricao"));
+                obj.setPreco(rs.getDouble("preco"));
+                obj.setQtd_estoque(rs.getInt("qtd_estoque"));
+                f.setNome(rs.getString(("f.nome")));
+                
+                obj.setFornecedor(f);
+            }
+
+            return obj;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+            return null;
+        }
+    } 
 }

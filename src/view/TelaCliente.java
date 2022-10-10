@@ -22,7 +22,6 @@ public class TelaCliente extends javax.swing.JFrame {
         jBttnSalvar.setEnabled(true);
         jBttnExcluir.setEnabled(true);
         jBttnEditar.setEnabled(true);
-
     }
 
     public void desabilitarBotoes() {
@@ -30,7 +29,6 @@ public class TelaCliente extends javax.swing.JFrame {
         jBttnSalvar.setEnabled(false);
         jBttnExcluir.setEnabled(false);
         jBttnEditar.setEnabled(false);
-
     }
 
     public void listar() {
@@ -57,9 +55,7 @@ public class TelaCliente extends javax.swing.JFrame {
                 c.getCidade(),
                 c.getUf()
             });
-
         }
-
     }
     /**
      * Creates new form TelaCliente
@@ -571,8 +567,6 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBttnEditarActionPerformed
 
     private void jTblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblClientesMouseClicked
-        // TODO add your handling code here:
-
         habilitarBotoes();
         JtbPaneDadosPessoais.setSelectedIndex(0);
 
@@ -631,7 +625,6 @@ public class TelaCliente extends javax.swing.JFrame {
                 c.getCidade(),
                 c.getUf()
             });
-
         }
     }//GEN-LAST:event_jTxtNomePesquisaKeyPressed
 
@@ -646,7 +639,7 @@ public class TelaCliente extends javax.swing.JFrame {
 
         if (obj.getNome() != null) {
 
-//Exibi os dados do obj nos campos de texto
+        //Exibi os dados do obj nos campos de texto
             jTxtCodigo.setText(String.valueOf(obj.getId()));
             jTxtNome.setText(obj.getNome());
             jFormattedRG.setText(obj.getRg());
@@ -693,7 +686,6 @@ public class TelaCliente extends javax.swing.JFrame {
                 c.getCidade(),
                 c.getUf()
             });
-
         }
     }//GEN-LAST:event_jBttnPesquisarNomeActionPerformed
 
@@ -713,7 +705,6 @@ public class TelaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jFormattedCEPKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
         listar();
         desabilitarBotoes();
     }//GEN-LAST:event_formWindowActivated

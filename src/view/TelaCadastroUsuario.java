@@ -63,7 +63,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
        
         tableModel = (DefaultTableModel) jTableUsuario.getModel();
         if (jTxtFiltroCliente.getText().isEmpty()) {
-            listaUsuarios = dao.consultaUsarios();
+            listaUsuarios = dao.consultaUsuarios();
         } else {
             listaUsuarios = dao.consultaUsuarioNome(jTxtFiltroCliente.getText());
         }

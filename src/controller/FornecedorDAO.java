@@ -32,6 +32,7 @@ public class FornecedorDAO {
     
     //Metodo cadastrarFornecedor
     public void cadastrarFornecedor(Fornecedor obj) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
@@ -68,6 +69,7 @@ public class FornecedorDAO {
     
      //Metodo AlterarFornecedor
     public void alterarFornecedor(Fornecedor obj) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
@@ -105,6 +107,7 @@ public class FornecedorDAO {
     
     //Metodo ExcluirFornecedor
     public void excluirFornecedor(Fornecedor obj) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo  - criar o comando sql
@@ -119,16 +122,14 @@ public class FornecedorDAO {
             stmt.close();
 
             JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
-
         } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro: " + erro);
-
         }
-
     }
     
     //Metodo Listar Todos Fornecedores
     public List<Fornecedor> listarFornecedores() {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo criar a lista
@@ -167,11 +168,11 @@ public class FornecedorDAO {
             JOptionPane.showMessageDialog(null, "Erro :" + erro);
             return null;
         }
-
     }
     
    //metodo consultaFornecedor por Nome
     public Fornecedor consultaPorNome(String nome) {
+        con = ModuleConexao.conectar();
         try {
             //1 passo - criar o sql , organizar e executar.
             String sql = "select * from fornecedores where nome = ?";
@@ -200,7 +201,6 @@ public class FornecedorDAO {
             }
 
             return obj;
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Fornecedor não encontrado!");
             return null;
@@ -209,6 +209,7 @@ public class FornecedorDAO {
     
   //metodo busca Fornecedor  por Cnpj
     public Fornecedor buscaporCnpj(String cnpj) {
+        con = ModuleConexao.conectar();
         try {
             //1 passo - criar o sql , organizar e executar.
             String sql = "select * from fornecedores where cnpj = ?";
@@ -246,6 +247,7 @@ public class FornecedorDAO {
     
     //Metodo buscarfornecedorPorNome - retorna uma lista
     public List<Fornecedor> buscaFornecedorPorNome(String nome) {
+        con = ModuleConexao.conectar();
         try {
 
             //1 passo criar a lista
@@ -264,7 +266,7 @@ public class FornecedorDAO {
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
                 obj.setRg(rs.getString("rg"));
-                obj.setCpf(rs.getString("cpf"));
+                obj.setCnpj(rs.getString("cnpj"));
                 obj.setEmail(rs.getString("email"));
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setCelular(rs.getString("celular"));
@@ -280,12 +282,10 @@ public class FornecedorDAO {
             }
 
             return lista;
-
         } catch (SQLException erro) {
 
             JOptionPane.showMessageDialog(null, "Erro :" + erro);
             return null;
         }
     }
-    
 }

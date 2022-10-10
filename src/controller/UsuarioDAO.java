@@ -46,7 +46,7 @@ public class UsuarioDAO {
 
     }
     
-    public List<Usuario> consultaUsarios(){
+    public List<Usuario> consultaUsuarios(){
         List<Usuario> listaUsuarios = new ArrayList<>();
         Usuario usuario;
         try {
