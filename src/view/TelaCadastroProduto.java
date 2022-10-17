@@ -379,8 +379,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));
         
         //Criar um objeto de fornecedor
-        Fornecedor f = new Fornecedor();
-        f = (Fornecedor) jCmbBoxFornecedor.getSelectedItem();
+        FornecedorDAO consultaFornecedor = new FornecedorDAO();
+        Fornecedor f = consultaFornecedor.consultaPorNome(jCmbBoxFornecedor.getSelectedItem().toString());
         obj.setFornecedor(f);
 
         ProdutoDAO dao = new ProdutoDAO();
@@ -397,10 +397,13 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         Produto obj = new Produto();
 
         obj.setDescricao(jTxtDescricao.getText());
-        obj.setPreco(Integer.parseInt(jTxtPreco.getText()));
-        obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));
-        obj.setFornecedor((Fornecedor) jCmbBoxFornecedor.getSelectedItem());
+        obj.setPreco(Double.parseDouble(jTxtPreco.getText()));
+        obj.setQtd_estoque(Integer.parseInt(jTxtEstoque.getText()));   
 
+        FornecedorDAO consultaFornecedor = new FornecedorDAO();
+        Fornecedor Fornecedor = consultaFornecedor.consultaPorNome(jCmbBoxFornecedor.getSelectedItem().toString());
+        obj.setFornecedor(Fornecedor);
+        
         obj.setId(Integer.parseInt(jTxtCodigo.getText()));
 
         ProdutoDAO dao = new ProdutoDAO();
